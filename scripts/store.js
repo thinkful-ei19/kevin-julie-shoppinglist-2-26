@@ -28,7 +28,7 @@ const store = (function () {
       }
     },
     findAndToggleChecked:(id) => {
-      this.findById(id).checked = !(this.findById(id).checked);
+      store.findById(id).checked = !(store.findById(id).checked);
     }, 
     findAndUpdateName:(id, newName) => {
       try {
