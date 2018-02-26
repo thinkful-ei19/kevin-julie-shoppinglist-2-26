@@ -32,10 +32,10 @@ const store = (function () {
     }, 
     findAndUpdateName:(id, newName) => {
       try {
-        Item.validateName();
+        Item.validateName(newName);
         store.items.findById(id).name = newName;
       } catch(error) {
-        console.log('Cannot update name: {error.message}');
+        console.log(`Cannot update name: ${error.message}`);
       }
     },
     findAndDelete:(id) => {
