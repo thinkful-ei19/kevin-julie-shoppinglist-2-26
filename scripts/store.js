@@ -1,4 +1,5 @@
 'use strict';
+/* global cuid */
 const store = (function () {
   //items
   //hide
