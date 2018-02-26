@@ -1,6 +1,26 @@
 'use strict';
+/* global cuid */
+const Item = (function () {
+  function validateName(name) {
+    if (!name) {
+      throw 'Name does not exist.';
+    }
+  }
+  
+  function create(name) {
+    return {
+      id: cuid(),
+      name: name,
+      checked: false
+    };
+  }
 
-const item = (function () {
-  const foo = 'bar';
-  return foo;
-}() );
+
+  return {
+    validateName: validateName,
+    create: create,
+  };
+
+})(); 
+
+
