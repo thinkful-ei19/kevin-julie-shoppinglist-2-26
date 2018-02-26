@@ -42,9 +42,5 @@ const store = (function () {
       store.items = store.items.filter(item => item.id !== id);
       console.log(store.items);
     },
-
-    
-
   };
-  
 }() );
