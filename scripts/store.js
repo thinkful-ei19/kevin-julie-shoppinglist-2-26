@@ -17,30 +17,29 @@ const store = (function () {
     findById:(id) => {
       return store.items.find(items => items.id === id); 
     },   
-    addItem:itemName => {
+    addItem: itemName => {
       try {
         Item.validateName(itemName);
         //let test = Item.create(itemName);
         store.items.push(Item.create(itemName));
-        console.log(test);
+        // console.log(test);
       } catch (error) {
         console.log(error);
       }
     },
     findAndToggleChecked:(id) => {
-      this.findById(id).checked = !(this.findById(id).checked);
+      store.findById(id).checked = !(store.findById(id).checked);
     }, 
-    findAndUpdateName:(id, newName) => {
+    findAndUpdateName: (id, newName) => {
       try {
-        Item.validateName();
-        store.items.findById(id).name = newName;
+        Item.validateName(newName);
+        store.findById(id).name = newName;
       } catch(error) {
-        console.log('Cannot update name: {error.message}');
+        console.log(`Cannot update name: ${error.message}`);
       }
     },
-    findAndDelete:(id) => {
+    findAndDelete: id => {
       store.items = store.items.filter(item => item.id !== id);
-      console.log(store.items);
     },
   };
 }() );
