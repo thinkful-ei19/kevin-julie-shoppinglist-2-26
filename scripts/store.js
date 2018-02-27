@@ -14,6 +14,7 @@ const store = (function () {
     ],
     hideCheckedItems: false,
     searchTerm: '',
+    searches: [],
     findById:(id) => {
       return store.items.find(items => items.id === id); 
     },   
@@ -27,7 +28,7 @@ const store = (function () {
         console.log(error);
       }
     },
-    findAndToggleChecked:(id) => {
+    findAndToggleChecked: id => {
       store.findById(id).checked = !(store.findById(id).checked);
     }, 
     findAndUpdateName: (id, newName) => {
@@ -41,5 +42,16 @@ const store = (function () {
     findAndDelete: id => {
       store.items = store.items.filter(item => item.id !== id);
     },
+    searchByName: name => { 
+      console.log('hello world');
+      store.searches = store.items.filter( el => el.name.includes(name));
+    },
+    updateSearchTerm: term => {
+      store.searchTerm = term;
+      store.searchByName(term);
+    },
+    toggleCheckedFilter: () => {
+      store.hideCheckedItems = !(store.hideCheckedItems);
+    }
   };
 }() );
